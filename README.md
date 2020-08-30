@@ -15,7 +15,7 @@ A simple auth service written in Go
   - Body
 
   {
-  "user_id": <user id>
+  "user_id": {user id}
   }
 
 * Response: 200
@@ -23,10 +23,10 @@ A simple auth service written in Go
   - Body
 
     {
-    "\_id": <Mongo ID>,
-    "user_id": <Proveded user id>,
-    "access_token": <JWT>,
-    "refresh_token": <base64 encoded JWT>
+    "\_id": {Mongo ID},
+    "user_id": {Proveded user id},
+    "access_token": {JWT},
+    "refresh_token": {base64 encoded JWT}
     }
 
 ## Refresh Access Token [PUT /api/v1/auth/tokens]
@@ -37,8 +37,8 @@ A simple auth service written in Go
   - Body
 
     {
-    "access_token": <JWT>,
-    "refresh_token": <base64 encoded JWT>
+    "access_token": {JWT},
+    "refresh_token": {base64 encoded JWT}
     }
 
 * Response: 200
@@ -46,10 +46,10 @@ A simple auth service written in Go
   - Body
 
     {
-    "\_id": <Mongo ID>,
-    "user_id": <Proveded user id>,
-    "access_token": <JWT>,
-    "refresh_token": <base64 encoded JWT>
+    "\_id": {Mongo ID},
+    "user_id": {Proveded user id},
+    "access_token": {JWT},
+    "refresh_token": {base64 encoded JWT}
     }
 
 ## Delete Refresh Token [DELETE /api/v1/auth/tokens/{base64_encoded_refresh_token}]
