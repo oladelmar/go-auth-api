@@ -113,7 +113,7 @@ func handleCreateTokenPair() http.HandlerFunc {
 		}
 
 		tokensCollection := db.Collection("tokens")
-		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		ctx, cancel := context.WithTimeout(context.Background(), 90*time.Second)
 		defer cancel()
 
 		tokenPair.UserID = req.UserID
@@ -237,7 +237,7 @@ func handleRefreshToken() http.HandlerFunc {
 		}
 
 		tokensCollection := db.Collection("tokens")
-		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		ctx, cancel := context.WithTimeout(context.Background(), 90*time.Second)
 		defer cancel()
 
 		if err = tokensCollection.FindOne(ctx, TokenPair{ID: primitiveID, AccessToken: accessToken}).Decode(&tokenPair); err != nil {
@@ -329,7 +329,7 @@ func handleDeleteOneToken() http.HandlerFunc {
 		}
 
 		tokensCollection := db.Collection("tokens")
-		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		ctx, cancel := context.WithTimeout(context.Background(), 90*time.Second)
 		defer cancel()
 
 		var tokenPair TokenPair
@@ -366,7 +366,7 @@ func handleDeleteAllTokensForUser() http.HandlerFunc {
 		userID := params["user_id"]
 
 		tokensCollection := db.Collection("tokens")
-		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		ctx, cancel := context.WithTimeout(context.Background(), 90*time.Second)
 		defer cancel()
 
 		deleteMany := func(sessCtx mongo.SessionContext) (interface{}, error) {
@@ -417,7 +417,7 @@ func main() {
 
 	log.Println("App running on port " + env.Port + " ...")
 
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 90*time.Second)
 	defer cancel()
 	var err error
 	client, err = mongo.Connect(ctx, options.Client().ApplyURI("mongodb+srv://"+env.DBUser+":"+env.DBPassword+"@cluster0.s9vst.mongodb.net/"+env.DBName))
